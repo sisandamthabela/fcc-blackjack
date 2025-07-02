@@ -2,8 +2,8 @@ let cardsEl = document.querySelector("#cards-el");
 let sumEl = document.querySelector("#sum-el");
 let message = "";
 let messageEl = document.querySelector("#message-el");
-let firstCard = 10;
-let secondCard = 12;
+let firstCard = randomCard();
+let secondCard = randomCard();
 let sum = firstCard + secondCard;
 let isAlive = true;
 let hasBlackJack = false;
@@ -12,9 +12,18 @@ let cards = [firstCard, secondCard];
 function startGame() {
   renderGame();
 }
+
+function randomCard() {
+  let randomNumber = Math.floor(Math.random() * 13);
+  return randomNumber;
+}
+
 function renderGame() {
-  cardsEl.innerHTML = "Cards: " + cards[0] + " " + cards[1] + " " + cards[2];
+  cardsEl.innerHTML = "Cards: ";
   sumEl.innerHTML = "Sum: " + sum;
+  for (let i = 0; i < cards.length; i++) {
+    cardsEl.innerHTML += cards[i] + " ";
+  }
   if (sum < 21) {
     message = "Do you want to draw another card?";
   } else if (sum === 21) {
@@ -28,7 +37,7 @@ function renderGame() {
 }
 
 function drawCard() {
-  let card = 5;
+  let card = randomCard();
   cards.push(card);
   sum += card;
   sumEl.innerHTML = "Sum: " + sum;
