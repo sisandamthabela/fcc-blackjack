@@ -8,9 +8,9 @@ let cards = [];
 let isAlive = false;
 let hasBlackJack = false;
 let player = {
-  name: 'Sisanda',
-  chips: 145
-}
+  name: "Sisanda",
+  chips: 145,
+};
 
 function startGame() {
   isAlive = true;
@@ -22,7 +22,7 @@ function startGame() {
 }
 
 function randomCard() {
-  let randomNumber = Math.floor(Math.random() * 13);
+  let randomNumber = Math.floor(Math.random() * 13) + 1;
   if (randomNumber === 1) {
     return 11;
   } else if (randomNumber > 10) {
@@ -33,7 +33,7 @@ function randomCard() {
 }
 
 function renderGame() {
-  playerEl.innerHTML = player.name + ': R' + player.chips
+  playerEl.innerHTML = player.name + ": R" + player.chips;
   cardsEl.innerHTML = "Cards: ";
   sumEl.innerHTML = "Sum: " + sum;
   for (let i = 0; i < cards.length; i++) {
